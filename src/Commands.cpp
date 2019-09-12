@@ -141,7 +141,7 @@ class MultiLineTextCommand : public Command
     int           line;
   };
 
-  constexpr static int  lineHeight = 12;
+  constexpr static int  lineHeight = 10;
   std::unique_ptr<Font> font;
 
 public:
@@ -205,7 +205,7 @@ public:
 
   TextDef parsePart(const std::string& in)
   {
-    std::regex  textAndFormatSplit("(.*)@(([sb01234lcr])*)$", std::regex_constants::icase);
+    std::regex  textAndFormatSplit("(.*)@(([sb012345lcr])*)$", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, textAndFormatSplit))
@@ -255,7 +255,7 @@ public:
 
   int parseLine(const std::string& in)
   {
-    std::regex  alignmentRegex(".*([01234]).*", std::regex_constants::icase);
+    std::regex  alignmentRegex(".*([012345]).*", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, alignmentRegex))
@@ -267,7 +267,8 @@ public:
 
   virtual std::string getHelp() const override
   {
-    return "text2soled multitext \"Text1@[B|S][0|1|2|3|4][L|C|R]\" \"Text2@[B|S][0|1|2|3|4][L|C|R]\" ...";
+    return "text2soled multitext \"Text1@BL0\" \"Text2@SR1\" ... will draw Text1 on boled, left, Line 0 and Text2 on "
+           "soled, right, line 1 ";
   }
 
   virtual std::string getName() const override
