@@ -77,7 +77,7 @@ void FrameBuffer::clear()
 {
 #ifndef _DEVELOPMENT_PC
   memset(m_frontBuffer, 0, m_buffersize);
-#endif;
+#endif
 }
 
 void FrameBuffer::setColor(const Colors& c)

@@ -153,6 +153,7 @@ public:
     auto resourcePath = parentPath + "/resources/";
     font              = std::make_unique<Font>(resourcePath + "Emphase_8_Regular.ttf", 8);
     FrameBuffer::get().setColor(FrameBuffer::C255);
+    FrameBuffer::get().clear();
   }
 
   virtual int getNumArguments() const override
