@@ -158,7 +158,7 @@ public:
 
   virtual int getNumArguments() const override
   {
-    return 3;
+    return 1;
   }
 
   virtual void execute(char** argv, int numArgs) override
@@ -205,7 +205,7 @@ public:
 
   TextDef parsePart(const std::string& in)
   {
-    std::regex  textAndFormatSplit("(.*)@(([s|b|[0-4]|l|c|r])*)$", std::regex_constants::icase);
+    std::regex  textAndFormatSplit("(.*)@(([sb01234lcr])*)$", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, textAndFormatSplit))
@@ -217,7 +217,7 @@ public:
 
   Alignment parseAlignment(const std::string& in)
   {
-    std::regex  alignmentRegex(".*([l|c|r]).*", std::regex_constants::icase);
+    std::regex  alignmentRegex(".*([lcr]).*", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, alignmentRegex))
@@ -236,7 +236,7 @@ public:
 
   Display parseDisplay(const std::string& in)
   {
-    std::regex  alignmentRegex(".*([b|s]).*", std::regex_constants::icase);
+    std::regex  alignmentRegex(".*([bs]).*", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, alignmentRegex))
@@ -255,7 +255,7 @@ public:
 
   int parseLine(const std::string& in)
   {
-    std::regex  alignmentRegex(".*([0-4]).*", std::regex_constants::icase);
+    std::regex  alignmentRegex(".*([01234]).*", std::regex_constants::icase);
     std::smatch match;
 
     if (std::regex_match(in, match, alignmentRegex))
