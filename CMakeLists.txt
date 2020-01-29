@@ -10,6 +10,14 @@ set(LIBS
   freetype2
   )
 
+OPTION(DEV_PC
+  "Do not expect a frame buffer device, maybe do some tests."
+  OFF)
+
+IF(DEV_PC)
+  ADD_DEFINITIONS(-D_DEVELOPMENT_PC)
+ENDIF(DEV_PC)
+
 function(addLib name)
   pkg_check_modules(${name} REQUIRED ${name})
   include_directories(${${name}_INCLUDE_DIRS}) 
